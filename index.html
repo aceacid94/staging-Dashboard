@@ -201,9 +201,7 @@ td {
 <h3>Bug Raised Breakdown</h3>
 <table>
 <tr><th>Category</th><th>Total</th></tr>
-<tr><td>Component Functionality</td><td class="bad">79</td></tr>
-<tr><td>UI/UX</td><td class="warn">76</td></tr>
-<tr><td>SSAI</td><td>4</td></tr>
+<tbody id="bugBreakdownTable"></tbody>
 </table>
 </div>
 
@@ -288,6 +286,24 @@ bf.map(p=>{
  <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
  </tr>`;
 }).join("");
+
+/* BUG BREAKDOWN + TOTAL SUM */
+const breakdown = [
+ {c:"Component Functionality",t:79,cl:"bad"},
+ {c:"UI/UX",t:76,cl:"warn"},
+ {c:"SSAI",t:4,cl:""}
+];
+
+let breakdownTotal = 0;
+let breakdownHtml = "";
+
+for(let i=0;i<breakdown.length;i++){
+ breakdownTotal += breakdown[i].t;
+ breakdownHtml += `<tr><td>${breakdown[i].c}</td><td class="${breakdown[i].cl}">${breakdown[i].t}</td></tr>`;
+}
+
+breakdownHtml += `<tr><td><b>Total</b></td><td class="good"><b>${breakdownTotal}</b></td></tr>`;
+document.getElementById("bugBreakdownTable").innerHTML = breakdownHtml;
 
 /* DROPDOWN */
 function handleMenu(select){
