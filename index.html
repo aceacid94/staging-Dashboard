@@ -36,6 +36,7 @@ html, body {
 }
 
 .bug-fix { flex: 2; }
+.bug-raised { flex: 1; }
 .bug-breakdown { flex: 1; }
 
 /* ✅ HEADER RESTORED */
@@ -150,23 +151,6 @@ td {
 </table>
 </div>
 
-<!-- BUG -->
-<div class="section">
-<div class="section-header">
-<h3>New Bugs Raised</h3>
-
-<select class="dropdown" onchange="handleMenu(this)">
-<option value="">JIRA</option>
-<option value="jira">Total M8 JIRA Raised Dashboard</option>
-</select>
-</div>
-
-<table>
-<tr><th>Platform</th><th>L1</th></tr>
-<tbody id="bugRaisedTable"></tbody>
-</table>
-</div>
-
 </div>
 
 <!-- BOTTOM -->
@@ -181,6 +165,23 @@ td {
 <th>Done</th><th>Resolved</th><th>%</th>
 </tr>
 <tbody id="bugFixTable"></tbody>
+</table>
+</div>
+
+<!-- BUG RAISED -->
+<div class="section bug-raised">
+<div class="section-header">
+<h3>New Bugs Raised</h3>
+
+<select class="dropdown" onchange="handleMenu(this)">
+<option value="">JIRA</option>
+<option value="jira">Total M8 JIRA Raised Dashboard</option>
+</select>
+</div>
+
+<table>
+<tr><th>Platform</th><th>L1</th></tr>
+<tbody id="bugRaisedTable"></tbody>
 </table>
 </div>
 
