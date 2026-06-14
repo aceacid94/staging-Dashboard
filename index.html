@@ -151,6 +151,17 @@ td {
 </table>
 </div>
 
+<!-- M8 DUPLICATE -->
+<div class="section">
+<h3>Total M8 Feature</h3>
+<table>
+<tr>
+<th>Platform</th><th>Delivered</th><th>Validated</th><th>%</th>
+</tr>
+<tbody id="m8Table2"></tbody>
+</table>
+</div>
+
 </div>
 
 <!-- BOTTOM -->
@@ -230,6 +241,16 @@ const m8 = [
 ];
 
 document.getElementById("m8Table").innerHTML =
+m8.map(p=>{
+ let pct=(p.v/p.d*100).toFixed(1);
+ return `<tr>
+ <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td>
+ <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
+ </tr>`;
+}).join("");
+
+/* M8 DUPLICATE + PROGRESS */
+document.getElementById("m8Table2").innerHTML =
 m8.map(p=>{
  let pct=(p.v/p.d*100).toFixed(1);
  return `<tr>
