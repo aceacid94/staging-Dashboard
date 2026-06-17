@@ -59,12 +59,11 @@ html, body {
 }
 
 
-/* ✅ SECTION HEADER FIX */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 /* TABLE WRAPPER */
@@ -93,23 +92,22 @@ td {
 }
 
 
-* ✅ DROPDOWN FIX (MAIN FIX) */
-.dropdown {
+
+dropdown {
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
 
-    padding: 6px 10px;   /* ✅ bigger tap area */
+    padding: 4px 8px;
     font-size: 12px;
 
-    height: auto;        /* ✅ FIX: remove truncation */
-    min-height: 32px;    /* ✅ ensures proper size */
+    height: auto;        /* ✅ remove fixed small height */
+    min-height: 28px;    /* ✅ enough height so not cut */
 
-    width: auto;
-    max-width: 100%;
+    width: auto;         /* ✅ keep compact */
+    min-width: 70px;     /* ✅ enough for "JIRA" */
 }
-
 
 /* colors */
 .warn { color: #facc15; }
@@ -132,6 +130,7 @@ td {
 
 
 /* ✅ MOBILE FIX */
+
 @media (max-width: 768px) {
 
     .row {
@@ -142,10 +141,6 @@ td {
         width: 100%;
     }
 
-    .container {
-        width: 98%;
-    }
-
     .header h1 {
         font-size: 18px;
     }
@@ -154,17 +149,19 @@ td {
         font-size: 11px;
     }
 
-    /* ✅ STACK HEADER */
-    .section-header {
-        flex-direction: column;
-        align-items: stretch;
+    .container {
+        width: 98%;
     }
 
-    /* ✅ FULL WIDTH DROPDOWN */
+    /* ✅ KEEP COMPACT (do NOT force full width anymore) */
+    .section-header {
+        flex-direction: row;
+    }
+
     .dropdown {
-        width: 100%;
-        font-size: 14px;
-        padding: 8px 10px;
+        width: auto;
+        min-width: 70px;
+        font-size: 13px;
     }
 }
 
