@@ -13,57 +13,64 @@ html, body {
     color: #e2e8f0;
 }
 
-/* CONTAINER */
+/* ✅ CONTAINER (FIX DESKTOP WIDTH) */
 .container {
     width: 95%;
-    max-width: 1400px;
-    margin: 10px auto;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
-/* ROW LAYOUT */
+/* ✅ ROW */
 .row {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.row.top .section { flex: 1; }
-
-.section {
-    background: #1e293b;
-    padding: 10px;
-    border-radius: 8px;
+/* ✅ TOP ROW = 3 EVEN CARDS */
+.row.top .section {
     flex: 1;
 }
 
-.bug-fix { flex: 2; }
+/* ✅ CARD STYLE */
+.section {
+    background: #1e293b;
+    padding: 16px;
+    border-radius: 10px;
+    flex: 1;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
 
-/* HEADER */
+/* ✅ PERFECT LAYOUT RATIO */
+.bug-fix { flex: 2; }
+.bug-raised { flex: 1; }
+.bug-breakdown { flex: 1; }
+
+/* ✅ HEADER */
 .header {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 22px;
+    font-size: 26px;
 }
 
 .header p {
-    margin: 2px;
-    font-size: 12px;
+    margin: 4px;
+    font-size: 13px;
     color: #94a3b8;
 }
 
-/* SECTION HEADER */
+/* ✅ SECTION HEADER */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
 }
 
-/* TABLE */
+/* ✅ TABLE */
 .table-wrapper {
     overflow-x: auto;
 }
@@ -75,24 +82,22 @@ table {
 }
 
 th, td {
-    padding: 6px;
+    padding: 8px;
     text-align: left;
 }
 
 th { color: #94a3b8; }
 td { border-top: 1px solid #334155; }
 
-/* ✅ SIMPLE CLEAN DROPDOWN */
+/* ✅ DROPDOWN */
 .dropdown {
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
-
-    padding: 4px 8px;
+    padding: 5px 10px;
     font-size: 12px;
-
-    height: 28px;   /* ✅ enough height → no truncation */
+    height: 30px;
 }
 
 /* COLORS */
@@ -105,7 +110,7 @@ td { border-top: 1px solid #334155; }
     background: #334155;
     height: 6px;
     border-radius: 6px;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
 .progress-bar {
@@ -114,10 +119,9 @@ td { border-top: 1px solid #334155; }
     border-radius: 6px;
 }
 
-/* ✅ MOBILE FIX */
+/* ✅ MOBILE */
 @media (max-width: 768px) {
 
-    /* stack layout */
     .row {
         flex-direction: column;
     }
@@ -128,6 +132,7 @@ td { border-top: 1px solid #334155; }
 
     .container {
         width: 98%;
+        margin: 10px auto;
     }
 
     .header h1 {
@@ -139,9 +144,9 @@ td { border-top: 1px solid #334155; }
         min-width: 400px;
     }
 
-    /* ✅ key: prevent dropdown squeeze */
     .section-header {
         flex-wrap: wrap;
+        gap: 6px;
     }
 
     .dropdown {
@@ -170,9 +175,7 @@ td { border-top: 1px solid #334155; }
 <div class="table-wrapper">
 <table>
 <thead>
-<tr>
-<th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>NA</th><th>%</th>
-</tr>
+<tr><th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>NA</th><th>%</th></tr>
 </thead>
 <tbody id="overallTable"></tbody>
 </table>
@@ -183,9 +186,7 @@ td { border-top: 1px solid #334155; }
 <h3>Total M8 Feature Delivered</h3>
 <div class="table-wrapper">
 <table>
-<tr>
-<th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>%</th>
-</tr>
+<tr><th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>%</th></tr>
 <tbody id="m8Table"></tbody>
 </table>
 </div>
@@ -195,9 +196,7 @@ td { border-top: 1px solid #334155; }
 <h3>Total M0-M7 Feature Delivered</h3>
 <div class="table-wrapper">
 <table>
-<tr>
-<th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>%</th>
-</tr>
+<tr><th>Platform</th><th>Delivered</th><th>Validated</th><th>Blocked</th><th>%</th></tr>
 <tbody id="m8Table2"></tbody>
 </table>
 </div>
@@ -212,9 +211,7 @@ td { border-top: 1px solid #334155; }
 <h3>Bug Fixes Status</h3>
 <div class="table-wrapper">
 <table>
-<tr>
-<th>Platform</th><th>Delivered</th><th>Resolved</th><th>Done</th><th>Reopened</th><th>%</th>
-</tr>
+<tr><th>Platform</th><th>Delivered</th><th>Resolved</th><th>Done</th><th>Reopened</th><th>%</th></tr>
 <tbody id="bugFixTable"></tbody>
 </table>
 </div>
@@ -254,8 +251,8 @@ td { border-top: 1px solid #334155; }
 </div>
 
 <script>
+/* (YOUR ORIGINAL SCRIPT — UNCHANGED) */
 
-/* OVERALL */
 const overall = [
  {n:"AndroidTV",d:111,v:46,b:1,na:43},
  {n:"WebOS",d:115,v:50,b:0,na:39},
@@ -272,7 +269,6 @@ overall.map(p=>{
  </tr>`;
 }).join("");
 
-/* M8 */
 const m8 = [
  {n:"AndroidTV",d:7,v:4,b:1},
  {n:"WebOS",d:7,v:4,b:0},
@@ -289,7 +285,6 @@ m8.map(p=>{
  </tr>`;
 }).join("");
 
-/* M7 */
 const m7 = [
  {n:"AndroidTV",d:104,v:42,b:0},
  {n:"WebOS",d:108,v:46,b:0},
@@ -306,11 +301,9 @@ m7.map(p=>{
  </tr>`;
 }).join("");
 
-/* BUG RAISED */
 const br=[55,54,53,55];
 const names=["AndroidTV","WebOS","Tizen","Vidaa"];
 let total=0, html="";
-
 for(let i=0;i<br.length;i++){
  total+=br[i];
  html+=`<tr><td>${names[i]}</td><td class="warn">${br[i]}</td></tr>`;
@@ -318,7 +311,6 @@ for(let i=0;i<br.length;i++){
 html+=`<tr><td><b>Total</b></td><td class="good"><b>${total}</b></td></tr>`;
 document.getElementById("bugRaisedTable").innerHTML=html;
 
-/* BUG FIX */
 const bf=[
  {n:"AndroidTV",d:36,res:25,done:11,r:0},
  {n:"WebOS",d:41,res:15,done:24,r:2},
@@ -335,7 +327,6 @@ bf.map(p=>{
  </tr>`;
 }).join("");
 
-/* BREAKDOWN */
 const breakdown = [
  {c:"Component Functionality",t:108,cl:"bad"},
  {c:"UI/UX",t:102,cl:"warn"},
@@ -353,14 +344,12 @@ for(let i=0;i<breakdown.length;i++){
 breakdownHtml += `<tr><td><b>Total</b></td><td class="good"><b>${breakdownTotal}</b></td></tr>`;
 document.getElementById("bugBreakdownTable").innerHTML = breakdownHtml;
 
-/* DROPDOWN */
 function handleMenu(select){
  if(select.value==="jira"){
   window.open("https://astrogo.atlassian.net/issues/?jql=filter+%3D+%22ALTV+M8+BUG%22","_blank");
  }
  select.value="";
 }
-
 </script>
 
 </body>
