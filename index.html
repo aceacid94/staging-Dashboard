@@ -222,7 +222,7 @@ document.getElementById("overallTable").innerHTML =
 overall.map(p=>{
  let pct=(p.v/p.d*100).toFixed(1);
  return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="warn">${p.v}</td><td>${p.b}<td>${p.na}</td>
+ <td>${p.n}</td><td>${p.d}</td><td class="warn">${p.v}</td><td>${p.b}</td><td>${p.na}</td>
  <td>
  ${pct}%
  <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
@@ -239,18 +239,17 @@ const m8 = [
 
 /* M7 + PROGRESS */
 const m7 = [
- {n:"AndroidTV",d:104,v:42},
- {n:"WebOS",d:108,v:46},
- {n:"Tizen",d:108,v:45},
- {n:"Vidaa",d:108,v:45}
+ {n:"AndroidTV",d:104,v:42,b:0},
+ {n:"WebOS",d:108,v:46,b:0},
+ {n:"Tizen",d:108,v:45,b:0},
+ {n:"Vidaa",d:108,v:45,b:0}
 ]
-
-
+/* M8 PROGRESS */
 document.getElementById("m8Table").innerHTML =
 m8.map(p=>{
  let pct=(p.v/p.d*100).toFixed(1);
  return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td>
+ <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td><td>${p.b}</td>
  <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
  </tr>`;
 }).join("");
@@ -260,7 +259,7 @@ document.getElementById("m8Table2").innerHTML =
 m7.map(p=>{
  let pct=(p.v/p.d*100).toFixed(1);
  return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td>
+ <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td><td>${p.b}</td>
  <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
  </tr>`;
 }).join("");
