@@ -58,15 +58,14 @@ html, body {
     color: #94a3b8;
 }
 
-/* ✅ SECTION HEADER FIX */
+/* SECTION HEADER */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
 }
 
-/* ✅ TABLE WRAPPER */
+/* TABLE WRAPPER */
 .table-wrapper {
     overflow-x: auto;
 }
@@ -83,27 +82,24 @@ th, td {
     padding: 6px;
 }
 
-th { color: #94a3b8; }
+th {
+    color: #94a3b8;
+}
 
-td { border-top: 1px solid #334155; }
+td {
+    border-top: 1px solid #334155;
+}
 
-
-/* ✅ DROPDOWN FINAL FIX */
+/* dropdown */
 .dropdown {
-    display: block;              /* ✅ FIX */
-    width: 100%;                 /* ✅ FIX */
-    max-width: 180px;            /* desktop cap */
-
-    box-sizing: border-box;      /* ✅ FIX */
-
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
-
-    padding: 6px 8px;            /* ✅ better spacing */
-    font-size: 12px;
-
+    padding: 2px 6px;
+    font-size: 10px;
+    height: 22px;
+}
 
 /* colors */
 .warn { color: #facc15; }
@@ -145,20 +141,6 @@ td { border-top: 1px solid #334155; }
 
     .container {
         width: 98%;
-    }
-
-    /* ✅ STACK HEADER */
-    .section-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    /* ✅ FULL WIDTH DROPDOWN */
-    .dropdown {
-        width: 100%;
-        max-width: none;
-        font-size: 13px;
-        padding: 6px;
     }
 }
 </style>
