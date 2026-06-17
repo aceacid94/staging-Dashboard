@@ -58,11 +58,13 @@ html, body {
     color: #94a3b8;
 }
 
-/* SECTION HEADER */
+
+/* ✅ SECTION HEADER FIX */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 /* TABLE WRAPPER */
@@ -90,16 +92,24 @@ td {
     border-top: 1px solid #334155;
 }
 
-/* dropdown */
+
+* ✅ DROPDOWN FIX (MAIN FIX) */
 .dropdown {
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
-    padding: 2px 6px;
-    font-size: 10px;
-    height: 22px;
+
+    padding: 6px 10px;   /* ✅ bigger tap area */
+    font-size: 12px;
+
+    height: auto;        /* ✅ FIX: remove truncation */
+    min-height: 32px;    /* ✅ ensures proper size */
+
+    width: auto;
+    max-width: 100%;
 }
+
 
 /* colors */
 .warn { color: #facc15; }
@@ -120,6 +130,7 @@ td {
     border-radius: 6px;
 }
 
+
 /* ✅ MOBILE FIX */
 @media (max-width: 768px) {
 
@@ -131,6 +142,10 @@ td {
         width: 100%;
     }
 
+    .container {
+        width: 98%;
+    }
+
     .header h1 {
         font-size: 18px;
     }
@@ -139,10 +154,20 @@ td {
         font-size: 11px;
     }
 
-    .container {
-        width: 98%;
+    /* ✅ STACK HEADER */
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* ✅ FULL WIDTH DROPDOWN */
+    .dropdown {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 10px;
     }
 }
+
 </style>
 </head>
 
