@@ -13,38 +13,41 @@ html, body {
     color: #e2e8f0;
 }
 
-/* ✅ CONTAINER (FIX DESKTOP WIDTH) */
+/* ✅ ZOOM-SAFE CONTAINER */
 .container {
-    width: 95%;
-    max-width: 1200px;
+    width: min(95%, 1400px);
     margin: 20px auto;
 }
 
-/* ✅ ROW */
+/* ✅ FLEX ROW (NO BREAK AT 90%) */
 .row {
     display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
-/* ✅ TOP ROW = 3 EVEN CARDS */
+/* ✅ TOP ROW */
 .row.top .section {
-    flex: 1;
+    flex: 1 1 320px;
 }
 
-/* ✅ CARD STYLE */
+/* ✅ CARD */
 .section {
     background: #1e293b;
     padding: 16px;
     border-radius: 10px;
-    flex: 1;
+
+    flex: 1 1 320px;
+    min-width: 0;
+
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* ✅ PERFECT LAYOUT RATIO */
-.bug-fix { flex: 2; }
-.bug-raised { flex: 1; }
-.bug-breakdown { flex: 1; }
+/* ✅ FIX BOTTOM LAYOUT RATIO */
+.bug-fix { flex: 2 1 600px; }
+.bug-raised { flex: 1 1 280px; }
+.bug-breakdown { flex: 1 1 280px; }
 
 /* ✅ HEADER */
 .header {
@@ -70,7 +73,7 @@ html, body {
     align-items: center;
 }
 
-/* ✅ TABLE */
+/* ✅ TABLE FIX */
 .table-wrapper {
     overflow-x: auto;
 }
@@ -78,7 +81,7 @@ html, body {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px;
+    min-width: 420px;
 }
 
 th, td {
@@ -119,15 +122,11 @@ td { border-top: 1px solid #334155; }
     border-radius: 6px;
 }
 
-/* ✅ MOBILE */
+/* ✅ MOBILE (SAFE) */
 @media (max-width: 768px) {
 
     .row {
         flex-direction: column;
-    }
-
-    .section {
-        width: 100%;
     }
 
     .container {
@@ -141,7 +140,6 @@ td { border-top: 1px solid #334155; }
 
     table {
         font-size: 11px;
-        min-width: 400px;
     }
 
     .section-header {
@@ -251,7 +249,7 @@ td { border-top: 1px solid #334155; }
 </div>
 
 <script>
-/* (YOUR ORIGINAL SCRIPT — UNCHANGED) */
+/* ✅ YOUR DATA (UNCHANGED) */
 
 const overall = [
  {n:"AndroidTV",d:111,v:46,b:1,na:43},
