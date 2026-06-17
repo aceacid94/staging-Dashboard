@@ -91,24 +91,31 @@ td {
     border-top: 1px solid #334155;
 }
 
-
-
-dropdown {
+.dropdown {
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
 
-    padding: 4px 8px;
     font-size: 12px;
 
-    height: auto;        /* ✅ remove fixed small height */
-    min-height: 28px;    /* ✅ enough height so not cut */
+    padding: 0 30px 0 10px;   /* ✅ right space for arrow */
+    
+    height: 32px;             /* ✅ FIX: proper height */
+    line-height: 32px;        /* ✅ FIX: centers text */
 
-    width: auto;         /* ✅ keep compact */
-    min-width: 70px;     /* ✅ enough for "JIRA" */
+    width: auto;
+    min-width: 80px;
+
+    appearance: none;         /* ✅ better control */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23e2e8f0' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
 }
-
+    
 /* colors */
 .warn { color: #facc15; }
 .good { color: #22c55e; }
@@ -133,35 +140,14 @@ dropdown {
 
 @media (max-width: 768px) {
 
-    .row {
-        flex-direction: column;
-    }
-
-    .bug-fix, .bug-raised, .bug-breakdown {
-        width: 100%;
-    }
-
-    .header h1 {
-        font-size: 18px;
-    }
-
-    table {
-        font-size: 11px;
-    }
-
-    .container {
-        width: 98%;
-    }
-
-    /* ✅ KEEP COMPACT (do NOT force full width anymore) */
     .section-header {
-        flex-direction: row;
+        flex-direction: row; /* ✅ keep inline */
     }
 
     .dropdown {
-        width: auto;
-        min-width: 70px;
         font-size: 13px;
+        height: 34px;
+        line-height: 34px;
     }
 }
 
