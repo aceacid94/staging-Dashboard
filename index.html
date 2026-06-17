@@ -134,7 +134,7 @@ td {
 <h3>Overall M8 Release Note Status</h3>
 <table>
 <tr>
-<th>Platform</th><th>Delivered</th><th>Validated</th><th>NA</th><th>%</th>
+<th>Platform</th><th>Delivered</th><th>Validated</th><th>BLOCKED</th><th>NA</th><th>%</th>
 </tr>
 <tbody id="overallTable"></tbody>
 </table>
@@ -145,13 +145,13 @@ td {
 <h3>Total M8 Feature Delivered</h3>
 <table>
 <tr>
-<th>Platform</th><th>Delivered</th><th>Validated</th><th>%</th>
+<th>Platform</th><th>Delivered</th><th>Validated</th><th>BLOCKED</th><th>%</th>
 </tr>
 <tbody id="m8Table"></tbody>
 </table>
 </div>
 
-<!-- M8 DUPLICATE -->
+<!-- M7 -->
 <div class="section">
 <h3>Total M0-M7 Feature Delivered</h3>
 <table>
@@ -212,17 +212,17 @@ td {
 
 /* OVERALL + PROGRESS */
 const overall = [
- {n:"AndroidTV",d:111,v:46,na:43},
- {n:"WebOS",d:115,v:50,na:39},
- {n:"Tizen",d:115,v:50,na:39},
- {n:"Vidaa",d:115,v:50,na:39}
+ {n:"AndroidTV",d:111,v:46,b:1,na:43},
+ {n:"WebOS",d:115,v:50,b:0,na:39},
+ {n:"Tizen",d:115,v:50,b:0,na:39},
+ {n:"Vidaa",d:115,v:50,b:0,na:39}
 ];
 
 document.getElementById("overallTable").innerHTML =
 overall.map(p=>{
  let pct=(p.v/p.d*100).toFixed(1);
  return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="warn">${p.v}</td><td>${p.na}</td>
+ <td>${p.n}</td><td>${p.d}</td><td class="warn">${p.v}</td><td>${p.b}<td>${p.na}</td>
  <td>
  ${pct}%
  <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
@@ -231,10 +231,10 @@ overall.map(p=>{
 
 /* M8 + PROGRESS */
 const m8 = [
- {n:"AndroidTV",d:7,v:4},
- {n:"WebOS",d:7,v:4},
- {n:"Tizen",d:7,v:5},
- {n:"Vidaa",d:7,v:5}
+ {n:"AndroidTV",d:7,v:4,b:1},
+ {n:"WebOS",d:7,v:4,b:0},
+ {n:"Tizen",d:7,v:5,b:0},
+ {n:"Vidaa",d:7,v:5,b:0}
 ];
 
 /* M7 + PROGRESS */
