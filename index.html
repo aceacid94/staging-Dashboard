@@ -172,8 +172,7 @@ td {
 <h3>Bug Fixes Status</h3>
 <table>
 <tr>
-<th>Platform</th><th>Delivered</th><th>Reopened</th>
-<th>Done</th><th>Resolved</th><th>%</th>
+<th>Platform</th><th>Delivered</th><th>Resolved</th><th>Done</th><th>Reopened</th><th>%</th>
 </tr>
 <tbody id="bugFixTable"></tbody>
 </table>
@@ -213,10 +212,10 @@ td {
 
 /* OVERALL + PROGRESS */
 const overall = [
- {n:"AndroidTV",d:111,v:32,na:43},
- {n:"WebOS",d:115,v:44,na:39},
- {n:"Tizen",d:115,v:43,na:39},
- {n:"Vidaa",d:115,v:45,na:39}
+ {n:"AndroidTV",d:111,v:46,na:43},
+ {n:"WebOS",d:115,v:50,na:39},
+ {n:"Tizen",d:115,v:50,na:39},
+ {n:"Vidaa",d:115,v:50,na:39}
 ];
 
 document.getElementById("overallTable").innerHTML =
@@ -240,10 +239,10 @@ const m8 = [
 
 /* M7 + PROGRESS */
 const m7 = [
- {n:"AndroidTV",d:104,v:28},
- {n:"WebOS",d:108,v:40},
- {n:"Tizen",d:108,v:38},
- {n:"Vidaa",d:108,v:40}
+ {n:"AndroidTV",d:104,v:42},
+ {n:"WebOS",d:108,v:46},
+ {n:"Tizen",d:108,v:45},
+ {n:"Vidaa",d:108,v:45}
 ]
 
 
@@ -267,7 +266,7 @@ m7.map(p=>{
 }).join("");
 
 /* BUG RAISED */
-const br=[41,39,39,40];
+const br=[55,54,53,55];
 const names=["AndroidTV","WebOS","Tizen","Vidaa"];
 let total=0, html="";
 
@@ -298,9 +297,9 @@ bf.map(p=>{
 
 /* BUG BREAKDOWN + TOTAL SUM */
 const breakdown = [
- {c:"Component Functionality",t:79,cl:"bad"},
- {c:"UI/UX",t:76,cl:"warn"},
- {c:"SSAI",t:4,cl:""}
+ {c:"Component Functionality",t:102,cl:"bad"},
+ {c:"UI/UX",t:104,cl:"warn"},
+ {c:"SSAI",t:7,cl:""}
 ];
 
 let breakdownTotal = 0;
