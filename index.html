@@ -8,20 +8,19 @@
 <style>
 html, body {
     margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
     font-family: Arial, sans-serif;
     background: #0f172a;
     color: #e2e8f0;
-    font-size: 12px;
 }
 
+/* ✅ GLOBAL */
 .container {
     width: 95%;
     max-width: 1400px;
     margin: 10px auto;
 }
 
+/* ✅ FLEX ROW */
 .row {
     display: flex;
     gap: 10px;
@@ -34,14 +33,13 @@ html, body {
     background: #1e293b;
     padding: 10px;
     border-radius: 8px;
-    min-width: 0;
+    flex: 1;
 }
 
+/* layout sizing */
 .bug-fix { flex: 2; }
-.bug-raised { flex: 1; }
-.bug-breakdown { flex: 1; }
 
-/* HEADER */
+/* ✅ HEADER */
 .header {
     text-align: center;
     margin-bottom: 10px;
@@ -58,64 +56,42 @@ html, body {
     color: #94a3b8;
 }
 
-
+/* ✅ SECTION HEADER */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
 }
 
-/* TABLE WRAPPER */
+/* ✅ TABLE */
 .table-wrapper {
     overflow-x: auto;
 }
 
-/* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px;
 }
 
 th, td {
-    text-align: left;
     padding: 6px;
+    text-align: left;
 }
 
-th {
-    color: #94a3b8;
-}
+th { color: #94a3b8; }
 
-td {
-    border-top: 1px solid #334155;
-}
+td { border-top: 1px solid #334155; }
 
+/* ✅ SIMPLE DROPDOWN (RESTORED CLEAN) */
 .dropdown {
     background: #0f172a;
     color: #e2e8f0;
     border: 1px solid #334155;
     border-radius: 6px;
-
+    padding: 4px 8px;
     font-size: 12px;
-
-    padding: 0 30px 0 10px;   /* ✅ right space for arrow */
-    
-    height: 32px;             /* ✅ FIX: proper height */
-    line-height: 32px;        /* ✅ FIX: centers text */
-
-    width: auto;
-    min-width: 80px;
-
-    appearance: none;         /* ✅ better control */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    background-image: url("data:image/svg+xml;utf8,<svg fill='%23e2e8f0' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 8px center;
 }
-    
+
 /* colors */
 .warn { color: #facc15; }
 .good { color: #22c55e; }
@@ -135,22 +111,42 @@ td {
     border-radius: 6px;
 }
 
-
-/* ✅ MOBILE FIX */
-
+/* ✅ ✅ MOBILE FIX (KEY PART) */
 @media (max-width: 768px) {
 
-    .section-header {
-        flex-direction: row; /* ✅ keep inline */
+    /* ✅ STACK ALL ROWS */
+    .row {
+        flex-direction: column;
     }
 
+    .section {
+        width: 100%;
+    }
+
+    .container {
+        width: 98%;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    table {
+        font-size: 11px;
+    }
+
+    /* ✅ FIX dropdown truncation WITHOUT breaking design */
     .dropdown {
         font-size: 13px;
-        height: 34px;
-        line-height: 34px;
+        padding: 6px 8px;
+    }
+
+    /* ✅ Allow wrapping instead of squishing */
+    .section-header {
+        flex-wrap: wrap;
+        gap: 6px;
     }
 }
-
 </style>
 </head>
 
@@ -246,98 +242,6 @@ td {
 </div>
 
 <script>
-const overall = [
- {n:"AndroidTV",d:111,v:46,b:1,na:43},
- {n:"WebOS",d:115,v:50,b:0,na:39},
- {n:"Tizen",d:115,v:50,b:0,na:39},
- {n:"Vidaa",d:115,v:50,b:0,na:39}
-];
-
-document.getElementById("overallTable").innerHTML =
-overall.map(p=>{
- let pct=(p.v/p.d*100).toFixed(1);
- return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="warn">${p.v}</td><td>${p.b}</td><td>${p.na}</td>
- <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
- </tr>`;
-}).join("");
-
-const m8 = [
- {n:"AndroidTV",d:7,v:4,b:1},
- {n:"WebOS",d:7,v:4,b:0},
- {n:"Tizen",d:7,v:5,b:0},
- {n:"Vidaa",d:7,v:5,b:0}
-];
-
-document.getElementById("m8Table").innerHTML =
-m8.map(p=>{
- let pct=(p.v/p.d*100).toFixed(1);
- return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td><td>${p.b}</td>
- <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
- </tr>`;
-}).join("");
-
-const m7 = [
- {n:"AndroidTV",d:104,v:42,b:0},
- {n:"WebOS",d:108,v:46,b:0},
- {n:"Tizen",d:108,v:45,b:0},
- {n:"Vidaa",d:108,v:45,b:0}
-];
-
-document.getElementById("m8Table2").innerHTML =
-m7.map(p=>{
- let pct=(p.v/p.d*100).toFixed(1);
- return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td class="good">${p.v}</td><td>${p.b}</td>
- <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
- </tr>`;
-}).join("");
-
-const br=[55,54,53,55];
-const names=["AndroidTV","WebOS","Tizen","Vidaa"];
-let total=0, html="";
-
-for(let i=0;i<br.length;i++){
- total+=br[i];
- html+=`<tr><td>${names[i]}</td><td class="warn">${br[i]}</td></tr>`;
-}
-html+=`<tr><td><b>Total</b></td><td class="good"><b>${total}</b></td></tr>`;
-document.getElementById("bugRaisedTable").innerHTML=html;
-
-const bf=[
- {n:"AndroidTV",d:36,res:25,done:11,r:0},
- {n:"WebOS",d:41,res:15,done:24,r:2},
- {n:"Tizen",d:39,res:13,done:24,r:2},
- {n:"Vidaa",d:40,res:15,done:24,r:1}
-];
-
-document.getElementById("bugFixTable").innerHTML =
-bf.map(p=>{
- let pct=(p.done/p.d*100).toFixed(1);
- return `<tr>
- <td>${p.n}</td><td>${p.d}</td><td>${p.res}</td><td>${p.done}</td><td>${p.r}</td>
- <td>${pct}%<div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div></td>
- </tr>`;
-}).join("");
-
-const breakdown = [
- {c:"Component Functionality",t:108,cl:"bad"},
- {c:"UI/UX",t:102,cl:"warn"},
- {c:"SSAI",t:7,cl:""}
-];
-
-let breakdownTotal = 0;
-let breakdownHtml = "";
-
-for(let i=0;i<breakdown.length;i++){
- breakdownTotal += breakdown[i].t;
- breakdownHtml += `<tr><td>${breakdown[i].c}</td><td class="${breakdown[i].cl}">${breakdown[i].t}</td></tr>`;
-}
-
-breakdownHtml += `<tr><td><b>Total</b></td><td class="good"><b>${breakdownTotal}</b></td></tr>`;
-document.getElementById("bugBreakdownTable").innerHTML = breakdownHtml;
-
 function handleMenu(select){
  if(select.value==="jira"){
   window.open("https://astrogo.atlassian.net/issues/?jql=filter+%3D+%22ALTV+M8+BUG%22","_blank");
